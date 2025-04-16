@@ -1,0 +1,15 @@
+C:\Users\Mattr\Skola\Årskurs 2\GMI2J3 - Software Testing 1\Github\Labb2\RomanNumerals\bin\Debug\net8.0\RomanNumerals.exe
+C:\Users\Mattr\Skola\Årskurs 2\GMI2J3 - Software Testing 1\Github\Labb2\RomanNumerals\bin\Debug\net8.0\RomanNumerals.deps.json
+C:\Users\Mattr\Skola\Årskurs 2\GMI2J3 - Software Testing 1\Github\Labb2\RomanNumerals\bin\Debug\net8.0\RomanNumerals.runtimeconfig.json
+C:\Users\Mattr\Skola\Årskurs 2\GMI2J3 - Software Testing 1\Github\Labb2\RomanNumerals\bin\Debug\net8.0\RomanNumerals.dll
+C:\Users\Mattr\Skola\Årskurs 2\GMI2J3 - Software Testing 1\Github\Labb2\RomanNumerals\bin\Debug\net8.0\RomanNumerals.pdb
+C:\Users\Mattr\Skola\Årskurs 2\GMI2J3 - Software Testing 1\Github\Labb2\RomanNumerals\obj\Debug\net8.0\RomanNumerals.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Mattr\Skola\Årskurs 2\GMI2J3 - Software Testing 1\Github\Labb2\RomanNumerals\obj\Debug\net8.0\RomanNumerals.AssemblyInfoInputs.cache
+C:\Users\Mattr\Skola\Årskurs 2\GMI2J3 - Software Testing 1\Github\Labb2\RomanNumerals\obj\Debug\net8.0\RomanNumerals.AssemblyInfo.cs
+C:\Users\Mattr\Skola\Årskurs 2\GMI2J3 - Software Testing 1\Github\Labb2\RomanNumerals\obj\Debug\net8.0\RomanNumerals.csproj.CoreCompileInputs.cache
+C:\Users\Mattr\Skola\Årskurs 2\GMI2J3 - Software Testing 1\Github\Labb2\RomanNumerals\obj\Debug\net8.0\RomanNumerals.sourcelink.json
+C:\Users\Mattr\Skola\Årskurs 2\GMI2J3 - Software Testing 1\Github\Labb2\RomanNumerals\obj\Debug\net8.0\RomanNumerals.dll
+C:\Users\Mattr\Skola\Årskurs 2\GMI2J3 - Software Testing 1\Github\Labb2\RomanNumerals\obj\Debug\net8.0\refint\RomanNumerals.dll
+C:\Users\Mattr\Skola\Årskurs 2\GMI2J3 - Software Testing 1\Github\Labb2\RomanNumerals\obj\Debug\net8.0\RomanNumerals.pdb
+C:\Users\Mattr\Skola\Årskurs 2\GMI2J3 - Software Testing 1\Github\Labb2\RomanNumerals\obj\Debug\net8.0\RomanNumerals.genruntimeconfig.cache
+C:\Users\Mattr\Skola\Årskurs 2\GMI2J3 - Software Testing 1\Github\Labb2\RomanNumerals\obj\Debug\net8.0\ref\RomanNumerals.dll
