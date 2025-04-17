@@ -7,6 +7,9 @@ namespace nUnit_BankAccountTests
     public class BankAccountDebitTests
     {
 
+        /// <summary>
+        /// Verifies that debiting a valid amount updates the account balance correctly.
+        /// </summary>
         [Test]
         public void Debit_WithValidAmount_UpdatesBalance()
         {
@@ -25,6 +28,9 @@ namespace nUnit_BankAccountTests
             Assert.That(actual, Is.EqualTo(expected).Within(0.001), "Account not debited correctly");
         }
 
+        /// <summary>
+        /// Verifies that debiting a negative amount throws an ArgumentOutOfRangeException.
+        /// </summary>
         [Test]
         public void Debit_WhenAmountIsLessThanZero_ShouldThrowArgumentOutOfRange()
         {
@@ -46,6 +52,9 @@ namespace nUnit_BankAccountTests
             }
         }
 
+        /// <summary>
+        /// Verifies that debiting an amount greater than the account balance throws an ArgumentOutOfRangeException.
+        /// </summary>
         [Test]
         public void Debit_WhenAmountIsMoreThanBalance_ShouldThrowArgumentOutOfRange()
         {
@@ -67,6 +76,9 @@ namespace nUnit_BankAccountTests
             }
         }
 
+        /// <summary>
+        /// Verifies that debiting the maximum double value reduces the account balance to zero.
+        /// </summary>
         [Test]
         public void Debit_WithMaxDoubleValue_ShouldReduceBalanceToZero()
         {
@@ -83,7 +95,9 @@ namespace nUnit_BankAccountTests
             Assert.That(account.Balance, Is.EqualTo(0.0).Within(0.001), "Balance should be zero after debiting double.MaxValue");
         }
 
-
+        /// <summary>
+        /// Verifies that debiting the smallest positive value updates the account balance correctly.
+        /// </summary>
         [Test]
         public void Debit_WithSmallestPositiveValue_UpdatesBalance()
         {
@@ -102,6 +116,9 @@ namespace nUnit_BankAccountTests
             Assert.That(actual, Is.EqualTo(expected).Within(0.001), "Account balance not updated correctly with smallest positive debit amount.");
         }
 
+        /// <summary>
+        /// Verifies that debiting an account that is frozen throws an exception.
+        /// </summary>
         [Test]
         public void Debit_WhenAccountIsFrozen_ShouldThrowException()
         {

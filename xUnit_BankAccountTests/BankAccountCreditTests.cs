@@ -11,6 +11,9 @@ namespace xUnit_BankAccountTests
 
     public class BankAccountCreditTests
     {
+        /// <summary>
+        /// Verifies that crediting a valid amount updates the account balance correctly.
+        /// </summary>
         [Fact]
         public void Credit_WithValidAmount_UpdatesBalance()
         {
@@ -28,6 +31,9 @@ namespace xUnit_BankAccountTests
             Assert.Equal(expected, account.Balance);
         }
 
+        /// <summary>
+        /// Verifies that crediting a negative amount throws an ArgumentOutOfRangeException.
+        /// </summary>
         [Fact]
         public void Credit_WithNegativeAmount_ShouldThrowArgumentOutOfRange()
         {
@@ -51,6 +57,9 @@ namespace xUnit_BankAccountTests
             Assert.Fail("Expected exception for negative credit amount was not thrown.");
         }
 
+        /// <summary>
+        /// Verifies that crediting zero does not change the account balance.
+        /// </summary>
         [Fact]
         public void Credit_WithZeroAmount_BalanceUnchanged()
         {
@@ -69,6 +78,9 @@ namespace xUnit_BankAccountTests
             Assert.Equal(expected, actual);
         }
 
+        /// <summary>
+        /// Verifies that crediting the maximum double value updates the account balance correctly.
+        /// </summary>
         [Fact]
         public void Credit_WithMaxDoubleValue_UpdatesBalance()
         {
@@ -87,6 +99,9 @@ namespace xUnit_BankAccountTests
             Assert.Equal(expected, actual, 3);
         }
 
+        /// <summary>
+        /// Verifies that crediting the smallest positive value updates the account balance correctly.
+        /// </summary>
         [Fact]
         public void Credit_WithSmallestPositiveValue_UpdatesBalance()
         {
@@ -105,6 +120,9 @@ namespace xUnit_BankAccountTests
             Assert.Equal(expected, actual);
         }
 
+        /// <summary>
+        /// Verifies that crediting an account that is frozen throws an exception.
+        /// </summary>
         [Fact]
         public void Credit_WhenAccountIsFrozen_ShouldThrowException()
         {

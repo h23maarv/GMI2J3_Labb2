@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace BankApp
 {
+    /// <summary>
+    /// The main entry point of the application. Demonstrates the usage of the BankAccount class.
+    /// </summary>
     static class Program
     {
         public static void Main(string[] args)
@@ -42,6 +45,9 @@ namespace BankApp
         private int failedAttempts;
         private const int MaxFailedAttempts = 3;
 
+        /// <summary>
+        /// Initializes a new instance of the BankAccount class with a customer name, initial balance, and credit limit.
+        /// </summary>
         public BankAccount(string customerName, double balance, double allowed_credit_limit)
         {
             m_customerName = customerName; // Set the customer name

@@ -10,6 +10,9 @@ namespace MS_BankAccountTests
     [TestClass]
     public class BankAccountCreditTests
     {
+        /// <summary>
+        /// Verifies that crediting a valid amount updates the account balance correctly.
+        /// </summary>
         [TestMethod]
         [Timeout(2000)]  // Milliseconds
         public void Credit_WithValidAmount_UpdatesBalance()
@@ -28,6 +31,9 @@ namespace MS_BankAccountTests
             Assert.AreEqual(expected, account.Balance, 0.001, "Credit did not update balance correctly");
         }
 
+        /// <summary>
+        /// Verifies that crediting a negative amount throws an ArgumentOutOfRangeException.
+        /// </summary>
         [TestMethod]
         public void Credit_WithNegativeAmount_ShouldThrowArgumentOutOfRange()
         {
@@ -51,6 +57,9 @@ namespace MS_BankAccountTests
             Assert.Fail("Expected exception for negative credit amount was not thrown.");
         }
 
+        /// <summary>
+        /// Verifies that crediting zero does not change the account balance.
+        /// </summary>
         [TestMethod]
         public void Credit_WithZeroAmount_BalanceUnchanged()
         {
@@ -69,6 +78,9 @@ namespace MS_BankAccountTests
             Assert.AreEqual(expected, actual, 0.001, "Account balance should remain unchanged when crediting zero.");
         }
 
+        /// <summary>
+        /// Verifies that crediting the maximum double value updates the account balance correctly.
+        /// </summary>
         [TestMethod]
         public void Credit_WithMaxDoubleValue_UpdatesBalance()
         {
@@ -87,6 +99,9 @@ namespace MS_BankAccountTests
             Assert.AreEqual(expected, actual, 3);
         }
 
+        /// <summary>
+        /// Verifies that crediting the smallest positive value updates the account balance correctly.
+        /// </summary>
         [TestMethod]
         public void Credit_WithSmallestPositiveValue_UpdatesBalance()
         {
@@ -105,6 +120,9 @@ namespace MS_BankAccountTests
             Assert.AreEqual(expected, actual, 0.001, "Account balance not updated correctly with smallest positive credit amount.");
         }
 
+        /// <summary>
+        /// Verifies that crediting an account that is frozen throws an exception.
+        /// </summary>
         [TestMethod]
         public void Credit_WhenAccountIsFrozen_ShouldThrowException()
         {

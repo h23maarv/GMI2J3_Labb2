@@ -4,6 +4,9 @@ namespace xUnit_BankAccountTests
 {
     public class BankAccountDebitTests
     {
+        /// <summary>
+        /// Verifies that debiting a valid amount updates the account balance correctly.
+        /// </summary>
         [Fact]
         public void Debit_WithValidAmount_UpdatesBalance()
         {
@@ -22,6 +25,9 @@ namespace xUnit_BankAccountTests
             Assert.Equal(expected, actual);
         }
 
+        /// <summary>
+        /// Verifies that debiting a negative amount throws an ArgumentOutOfRangeException.
+        /// </summary>
         [Fact]
         public void Debit_WhenAmountIsLessThanZero_ShouldThrowArgumentOutOfRange()
         {
@@ -43,6 +49,9 @@ namespace xUnit_BankAccountTests
             }
         }
 
+        /// <summary>
+        /// Verifies that debiting an amount greater than the account balance throws an ArgumentOutOfRangeException.
+        /// </summary>
         [Fact]
         public void Debit_WhenAmountIsMoreThanBalance_ShouldThrowArgumentOutOfRange()
         {
@@ -64,6 +73,9 @@ namespace xUnit_BankAccountTests
             }
         }
 
+        /// <summary>
+        /// Verifies that debiting the maximum double value reduces the account balance to zero.
+        /// </summary>
         [Fact]
         public void Debit_WithMaxDoubleValue_ShouldReduceBalanceToZero()
         {
@@ -80,6 +92,9 @@ namespace xUnit_BankAccountTests
             Assert.Equal(0.0, account.Balance, 3); // precision på 3 decimaler
         }
 
+        /// <summary>
+        /// Verifies that debiting the smallest positive value updates the account balance correctly.
+        /// </summary>
         [Fact]
         public void Debit_WithSmallestPositiveValue_UpdatesBalance()
         {
@@ -98,6 +113,9 @@ namespace xUnit_BankAccountTests
             Assert.Equal(expected, actual);
         }
 
+        /// <summary>
+        /// Verifies that debiting an account that is frozen throws an exception.
+        /// </summary>
         [Fact]
         public void Debit_WhenAccountIsFrozen_ShouldThrowException()
         {

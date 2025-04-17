@@ -1,12 +1,92 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\Mattr\\Skola\\\u00C5rskurs 2\\GMI2J3 - Software Testing 1\\Github\\Labb2\\MS_BankAccount\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0541FA0B-6249-45E3-A6AA-4650B39B3655}|..\\RomanNumerals\\RomanNumerals.csproj|c:\\users\\mattr\\skola\\\u00E5rskurs 2\\gmi2j3 - software testing 1\\github\\labb2\\romannumerals\\romannumeral.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{90696C13-8272-4E59-8798-C39AB281547D}|..\\RomanNumeralsTests\\RomanNumeralsTests.csproj|c:\\users\\mattr\\skola\\\u00E5rskurs 2\\gmi2j3 - software testing 1\\github\\labb2\\romannumeralstests\\roundtriptest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{90696C13-8272-4E59-8798-C39AB281547D}|..\\RomanNumeralsTests\\RomanNumeralsTests.csproj|c:\\users\\mattr\\skola\\\u00E5rskurs 2\\gmi2j3 - software testing 1\\github\\labb2\\romannumeralstests\\badinputstests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{90696C13-8272-4E59-8798-C39AB281547D}|..\\RomanNumeralsTests\\RomanNumeralsTests.csproj|c:\\users\\mattr\\skola\\\u00E5rskurs 2\\gmi2j3 - software testing 1\\github\\labb2\\romannumeralstests\\goodinputtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "RoundTripTest.cs",
+              "DocumentMoniker": "C:\\Users\\Mattr\\Skola\\\u00C5rskurs 2\\GMI2J3 - Software Testing 1\\Github\\Labb2\\RomanNumeralsTests\\RoundTripTest.cs",
+              "RelativeDocumentMoniker": "..\\RomanNumeralsTests\\RoundTripTest.cs",
+              "ToolTip": "C:\\Users\\Mattr\\Skola\\\u00C5rskurs 2\\GMI2J3 - Software Testing 1\\Github\\Labb2\\RomanNumeralsTests\\RoundTripTest.cs",
+              "RelativeToolTip": "..\\RomanNumeralsTests\\RoundTripTest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-17T09:18:59.662Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RomanNumeral.cs",
+              "DocumentMoniker": "C:\\Users\\Mattr\\Skola\\\u00C5rskurs 2\\GMI2J3 - Software Testing 1\\Github\\Labb2\\RomanNumerals\\RomanNumeral.cs",
+              "RelativeDocumentMoniker": "..\\RomanNumerals\\RomanNumeral.cs",
+              "ToolTip": "C:\\Users\\Mattr\\Skola\\\u00C5rskurs 2\\GMI2J3 - Software Testing 1\\Github\\Labb2\\RomanNumerals\\RomanNumeral.cs",
+              "RelativeToolTip": "..\\RomanNumerals\\RomanNumeral.cs",
+              "ViewState": "AgIAANgAAAAAAAAAAAAqwP4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-16T18:31:09.692Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "BadInputsTests.cs",
+              "DocumentMoniker": "C:\\Users\\Mattr\\Skola\\\u00C5rskurs 2\\GMI2J3 - Software Testing 1\\Github\\Labb2\\RomanNumeralsTests\\BadInputsTests.cs",
+              "RelativeDocumentMoniker": "..\\RomanNumeralsTests\\BadInputsTests.cs",
+              "ToolTip": "C:\\Users\\Mattr\\Skola\\\u00C5rskurs 2\\GMI2J3 - Software Testing 1\\Github\\Labb2\\RomanNumeralsTests\\BadInputsTests.cs",
+              "RelativeToolTip": "..\\RomanNumeralsTests\\BadInputsTests.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAQwBEAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-16T18:22:13.953Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GoodInputTests.cs",
+              "DocumentMoniker": "C:\\Users\\Mattr\\Skola\\\u00C5rskurs 2\\GMI2J3 - Software Testing 1\\Github\\Labb2\\RomanNumeralsTests\\GoodInputTests.cs",
+              "RelativeDocumentMoniker": "..\\RomanNumeralsTests\\GoodInputTests.cs",
+              "ToolTip": "C:\\Users\\Mattr\\Skola\\\u00C5rskurs 2\\GMI2J3 - Software Testing 1\\Github\\Labb2\\RomanNumeralsTests\\GoodInputTests.cs",
+              "RelativeToolTip": "..\\RomanNumeralsTests\\GoodInputTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-16T18:15:47.919Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

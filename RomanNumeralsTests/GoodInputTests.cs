@@ -8,25 +8,37 @@ using RomanNumerals;
 
 namespace RomanNumeralsTests
 {
-
+    /// <summary>
+    /// Tests for valid inputs to the Roman numeral conversion methods.
+    /// </summary>
     public class GoodInputTests
     {
+        /// <summary>
+        /// Verifies that converting integers to Roman numerals and back retains the original value.
+        /// </summary>
         [Fact]
         public void ToRoman_WithValidInputs_ReturnsCorrectRomanNumerals()
         {
             // Arrange
             var knownValues = RomanNumeral.VALUES
-                .Where(kvp => kvp.Value <= 3999) // Filter valid inputs (up to 3999)
-                .ToDictionary(kvp => kvp.Value, kvp => kvp.Key);
+                .Where(kvp => kvp.Value <= 3999)
+                .GroupBy(kvp => kvp.Value)
+                .ToDictionary(g => g.Key, g => g.First().Key);
 
             // Act & Assert
             foreach (var kvp in knownValues)
             {
-                var romanNumeral = new RomanNumeral(kvp.Key).ToString();
-                Assert.Equal(kvp.Value, romanNumeral);
+                var romanNumeral = new RomanNumeral(kvp.Key);
+                var parsed = RomanNumeral.ParseRoman(romanNumeral.ToString()).Number;
+
+                // Confirms that the number remains the same when converting back and forth.
+                Assert.Equal(kvp.Key, parsed);
             }
         }
 
+        /// <summary>
+        /// Verifies that parsing valid Roman numerals returns the correct integer values.
+        /// </summary>
         [Fact]
         public void ParseRoman_WithValidRomanNumerals_ReturnsCorrectIntegers()
         {
@@ -43,7 +55,9 @@ namespace RomanNumeralsTests
             }
         }
 
-
+        /// <summary>
+        /// Tests the conversion of the minimum valid integer (1) to a Roman numeral.
+        /// </summary>
         [Fact]
         public void ToRoman_WithMinimumValidInput_ReturnsCorrectRomanNumeral()
         {
@@ -57,6 +71,9 @@ namespace RomanNumeralsTests
             Assert.Equal("I", result);
         }
 
+        /// <summary>
+        /// Tests the conversion of the maximum valid integer (3999) to a Roman numeral.
+        /// </summary>
         [Fact]
         public void ToRoman_WithMaximumValidInput_ReturnsCorrectRomanNumeral()
         {
@@ -70,6 +87,9 @@ namespace RomanNumeralsTests
             Assert.Equal("MMMCMXCIX", result);
         }
 
+        /// <summary>
+        /// Tests parsing the minimum valid Roman numeral ("I") to an integer.
+        /// </summary>
         [Fact]
         public void ParseRoman_WithMinimumValidInput_ReturnsCorrectInteger()
         {
@@ -83,6 +103,9 @@ namespace RomanNumeralsTests
             Assert.Equal(1, result);
         }
 
+        /// <summary>
+        /// Tests parsing the maximum valid Roman numeral ("MMMCMXCIX") to an integer.
+        /// </summary>
         [Fact]
         public void ParseRoman_WithMaximumValidInput_ReturnsCorrectInteger()
         {

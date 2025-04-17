@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace RomanNumerals
 {
+    /// <summary>
+    /// Represents a Roman numeral and provides methods for conversion between integers and Roman numerals.
+    /// </summary>
     public class RomanNumeral
     {
         #region Constants
@@ -96,58 +99,43 @@ namespace RomanNumerals
         /// <returns></returns>
         public string ToRoman(RomanNumeralNotation notation)
         {
+            if (Number < 1 || Number > 3999)
+            {
+                throw new ArgumentOutOfRangeException(nameof(Number), "Number must be between 1 and 3999.");
+            }
+
             if (Number == 0)
             {
                 return NULLA;
             }
 
             // check notation for right set of characters
-            string[] numerals;
-            switch (notation)
-            {
-                case RomanNumeralNotation.Additive:
-                    numerals = ADDITIVE_NOTATION;
-                    break;
-                default:
-                    numerals = SUBTRACTIVE_NOTATION;
-                    break;
-            }
+            string[] numerals = notation == RomanNumeralNotation.Additive ? ADDITIVE_NOTATION : SUBTRACTIVE_NOTATION;
 
             var resultRomanNumeral = new StringBuilder();
-
-            // start with the M and iterate back
+            var value = Number;
             var position = 0;
 
-            // subtract till the number is 0
-            var value = Number;
-
-            do
+            while (value > 0)
             {
                 var numeral = numerals[position];
                 var numeralValue = VALUES[numeral];
 
-                // check if the value is in the number
                 if (value >= numeralValue)
                 {
-                    // subtract from the value
                     value -= numeralValue;
-
-                    // add the numeral to the string
                     resultRomanNumeral.Append(numeral);
 
-                    // multiple numeral? advance position because things like 'IVIV' does not exist
-                    bool isMultipleNumeral = numeral.Length > 1;
-                    if (isMultipleNumeral)
+                    if (numeral.Length > 1) // Skip invalid repeated subtractive combinations
                     {
                         position++;
                     }
-
-                    continue;
                 }
-
-                position++;
+                else
+                {
+                    position++;
+                }
             }
-            while (value != 0);
 
             return resultRomanNumeral.ToString();
         }
@@ -157,73 +145,158 @@ namespace RomanNumerals
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
+
+        // Förbättrade valideringar och felhantering
         public static RomanNumeral ParseRoman(string str)
         {
-            if (string.IsNullOrEmpty(str))
+            if (string.IsNullOrWhiteSpace(str))
             {
-                // should generate an exception
-                return new RomanNumeral(0);
+                throw new ArgumentException("Input cannot be null or empty.", nameof(str));
             }
 
-            //upper case the string
+            // Uppercase the string
             var strToRead = str.ToUpper();
 
-            // if ends in J -> replace it to I (used in medicine)
-            if (strToRead.EndsWith("J"))
+            // Check for invalid characters
+            if (!strToRead.All(c => NUMERAL_OPTIONS.Any(option => option.Contains(c))))
             {
-                strToRead = strToRead.Substring(0, strToRead.Length - 1) + "I";
+                throw new ArgumentException($"Input contains invalid characters: {str}", nameof(str));
             }
 
-            // if a U is present, assume a V
-            strToRead = strToRead.Replace("U", "V");
+            // Validate the Roman numeral string after range check
+            ValidateRomanNumeral(str);
 
-            // check simple numbers directly in dictionary
-            if (VALUES.ContainsKey(str))
+            // Check simple numbers directly in dictionary
+            if (VALUES.ContainsKey(strToRead))
             {
-                return new RomanNumeral(VALUES[str]);
+                return new RomanNumeral(VALUES[strToRead]);
             }
 
+            // Parse the string to calculate the value
             var resultNumber = 0;
-
-            // start with M and iterate through the options
             var numeralOptionPointer = 0;
 
-            // continue to read until the string is empty or the numeral options pointer has exceeded all options
             while (!string.IsNullOrEmpty(strToRead) && numeralOptionPointer < NUMERAL_OPTIONS.Length)
             {
-                // select the current numeral
                 var numeral = NUMERAL_OPTIONS[numeralOptionPointer];
 
-                // read numeral -> check if the numeral is used, otherwise move on to the next one
                 if (!strToRead.StartsWith(numeral))
                 {
                     numeralOptionPointer++;
                     continue;
                 }
 
-                // add the value of the found numeral
-                var value = VALUES[numeral];
-                resultNumber += value;
-
-                // remove the letters of the numeral from the string
+                resultNumber += VALUES[numeral];
                 strToRead = strToRead.Substring(numeral.Length);
 
-
-                // short hand like IX? -> move on to the next numeral option
                 if (numeral.Length > 1)
                 {
                     numeralOptionPointer++;
                 }
             }
 
-            // whole string is read, return the numeral
-            if (string.IsNullOrEmpty(strToRead))
+            // If the string is not fully parsed, it's invalid
+            if (!string.IsNullOrEmpty(strToRead))
             {
-                return new RomanNumeral(resultNumber);
+                throw new ArgumentException($"Invalid Roman numeral: {str}", nameof(str));
             }
 
-            // string is invalid
-            return null!;
+            // Check for out-of-range values
+            if (resultNumber > 3999)
+            {
+                throw new ArgumentOutOfRangeException(nameof(str), "Roman numeral value cannot exceed 3999.");
+            }
+
+            return new RomanNumeral(resultNumber);
+        }
+
+        /// <summary>
+        /// Validates the structure and rules of a Roman numeral string.
+        /// </summary>
+        private static void ValidateRomanNumeral(string str)
+        {
+            // Rules for non-repeatable numerals
+            var nonRepeatable = new[] { "V", "L", "D" };
+            foreach (var numeral in nonRepeatable)
+            {
+                if (CountOccurrences(str, numeral) > 1)
+                {
+                    throw new ArgumentException($"Invalid repetition of numeral: {numeral}");
+                }
+            }
+
+            // Rules for repeatable numerals (max 3 times in a row)
+            var repeatable = new[] { "I", "X", "C", "M" };
+            foreach (var numeral in repeatable)
+            {
+                if (str.Contains(new string(numeral[0], 4))) // e.g., "IIII", "XXXX", "CCCC", "MMMM"
+                {
+                    throw new ArgumentException($"Invalid repetition of numeral: {numeral}");
+                }
+            }
+
+            // Validate invalid combinations like "IVIV", "IXIX", etc.
+            var invalidSubtractiveCombinations = new[] { "IVIV", "IXIX", "XLXL", "XCXC", "CDCD", "CMCM" };
+            foreach (var combination in invalidSubtractiveCombinations)
+            {
+                if (str.Contains(combination))
+                {
+                    throw new ArgumentException($"Invalid repetition of subtractive combination: {combination}");
+                }
+            }
+
+            // Validate order of numerals
+            if (!IsValidRomanOrder(str))
+            {
+                throw new ArgumentException($"Invalid order of Roman numerals: {str}");
+            }
+
+            // Validate value range (ensure no representation exceeds 3999)
+            if (str.Contains("MMMM")) // Directly check for invalid "MMMM"
+            {
+                throw new ArgumentException($"Invalid value: Roman numeral exceeds 3999.");
+            }
+        }
+
+        /// <summary>
+        /// Checks if the order of characters in a Roman numeral string is valid.
+        /// </summary>
+        private static bool IsValidRomanOrder(string str)
+        {
+            // Define the valid order of Roman numerals
+            var validOrder = "MDCLXVI";
+            var lastIndex = int.MaxValue;
+
+            foreach (var c in str)
+            {
+                var currentIndex = validOrder.IndexOf(c);
+                if (currentIndex > lastIndex)
+                {
+                    // Allow valid additive combinations like "VI", "XI", etc.
+                    if (lastIndex - currentIndex > 1)
+                    {
+                        return false; // Numerals are out of order
+                    }
+                }
+                lastIndex = currentIndex;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Counts the occurrences of a specific substring in a string.
+        /// </summary>
+        public static int CountOccurrences(string str, string value)
+        {
+            int count = 0;
+            int index = 0;
+            while ((index = str.IndexOf(value, index)) != -1)
+            {
+                count++;
+                index += value.Length;
+            }
+            return count;
         }
 
         /// CODE BELOW THIS LINE IS FOR ARITHMETRIC OPERATIONS WITH ROMAN NUMERALS AND IS VOLUNTARY TO PERFORM
